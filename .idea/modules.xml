@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java_Meta.iml" filepath="$PROJECT_DIR$/.idea/Java_Meta.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_01_introduccion/_01_introduccion.iml" filepath="$PROJECT_DIR$/_01_introduccion/_01_introduccion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_02_bucles/_02_bucles.iml" filepath="$PROJECT_DIR$/_02_bucles/_02_bucles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_03_arrays_listas/_03_arrays_listas.iml" filepath="$PROJECT_DIR$/_03_arrays_listas/_03_arrays_listas.iml" />
+    </modules>
+  </component>
+</project>
