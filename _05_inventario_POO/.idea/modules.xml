@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/03_arrays_listar.iml" filepath="$PROJECT_DIR$/.idea/03_arrays_listar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_05_inventario_POO.iml" filepath="$PROJECT_DIR$/_05_inventario_POO.iml" />
     </modules>
   </component>
 </project>
