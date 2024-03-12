@@ -16,7 +16,7 @@ public class Curso {
     public void guardarEstudiante(Scanner objScan){
         System.out.println("Agregar nuevo estudiante\n");
         System.out.println("Ingresa el nombre del estudiante: ");
-        String nombre = objScan.nextLine();
+        String nombre = objScan.next();
 
         System.out.println("Ingresa el email del estudiante: ");
         String email = objScan.next();
@@ -84,5 +84,13 @@ public class Curso {
 
     public void setListaEstudiantes(ArrayList<Estudiante> listaEstudiantes) {
         this.listaEstudiantes = listaEstudiantes;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "codigo='" + codigo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }

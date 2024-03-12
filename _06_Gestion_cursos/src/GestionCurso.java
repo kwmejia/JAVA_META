@@ -13,7 +13,7 @@ public class GestionCurso {
         System.out.println("Agregar Curso");
 
         System.out.println("Ingresa el nombre del curso: ");
-        String nombre = objScan.nextLine();
+        String nombre = objScan.next();
 
         System.out.println("Ingresa el código del curso");
         String codigo = objScan.next();
@@ -36,6 +36,19 @@ public class GestionCurso {
         }
         return null;
     }
+
+    public void listarCursos(){
+        if (this.listaCursos.isEmpty()){
+            System.out.println("No hay cursos registrados");
+        }else{
+
+            System.out.println("Lista de cursos.");
+            for (Curso temp : this.listaCursos){
+                System.out.println(temp.toString());
+            }
+        }
+    }
+
     public ArrayList<Curso> getListaCursos() {
         return listaCursos;
     }
