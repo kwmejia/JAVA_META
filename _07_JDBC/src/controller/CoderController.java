@@ -32,4 +32,22 @@ public class CoderController {
         JOptionPane.showMessageDialog(null,list);
 
     }
+
+    public void create(){
+        Coder objCoder = new Coder();
+
+        String name = JOptionPane.showInputDialog("Insert name: ");
+        int age = Integer.parseInt(JOptionPane.showInputDialog("Insert age: "));
+        String clan = JOptionPane.showInputDialog("Insert clan: ");
+
+        objCoder.setName(name);
+        objCoder.setAge(age);
+        objCoder.setClan(clan);
+
+        objCoder = (Coder)  this.objCoderModel.insert(objCoder);
+
+        JOptionPane.showMessageDialog(null, objCoder.toString());
+
+
+    }
 }

@@ -15,7 +15,42 @@ import java.util.List;
 public class CoderModel implements CRUD {
     @Override
     public Object insert(Object object) {
-        return null;
+        //1. Abrir la conexion
+        Connection objConnection = ConfigDB.openConnection();
+        //2. Castear el objeto
+        Coder objCoder = (Coder) object;
+
+        try {
+            //3. Crear el SQL
+            String sql = "INSERT INTO coder(name,age,clan) VALUES(?,?,?);";
+            //4. Preparar el statement
+            PreparedStatement objPrepare =(PreparedStatement)  objConnection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+            //5. Asignar los ?
+
+            objPrepare.setString(1,objCoder.getName());
+            objPrepare.setInt(2,objCoder.getAge());
+            objPrepare.setString(3,objCoder.getClan());
+
+            //6. Ejecutamos el Query
+            objPrepare.execute();
+
+            //7. Obtener el resultado
+            ResultSet objResult = objPrepare.getGeneratedKeys();
+            while (objResult.next()){
+                objCoder.setId(objResult.getInt(1));
+            }
+
+            //8. Cerramos el prepareStatement
+            objPrepare.close();
+            JOptionPane.showMessageDialog(null," Coder insertion was successful.");
+
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error adding Coder "+ e.getMessage());
+        }
+        //9. Cerramos la conexión
+        ConfigDB.closeConnection();
+        return  objCoder;
     }
 
     @Override

@@ -22,6 +22,15 @@ public class Main {
                     
                     Choose an option: 
                     """);
+            switch (option){
+                case "1": //List All Coders
+                    objCoderController.getAll();
+                    break;
+
+                case "2":
+                    objCoderController.create();
+                    break;
+            }
 
         }while (!option.equals("6"));
     }
