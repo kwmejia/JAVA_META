@@ -83,13 +83,20 @@ public class CoderModel implements CRUD {
 
             int totalAffectedRows = objPrepare.executeUpdate();
 
+            if (totalAffectedRows>0){
+                isDeleted = true;
+                JOptionPane.showMessageDialog(null, "The delete was successful.");
+            }
+
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
+        //8. Cerrar la conexión
+        ConfigDB.closeConnection();
 
-        return false;
+        return isDeleted;
     }
 
     @Override
@@ -137,6 +144,35 @@ public class CoderModel implements CRUD {
 
     @Override
     public Object findById(int id) {
-        return null;
+        //1. Abrir la conexión
+        Connection objConnection = ConfigDB.openConnection();
+        Coder objCoder = null;
+        try {
+            //2. Sentencia SQL
+            String sql  = "SELECT * FROM coder WHERE  id = ?;";
+            //3. Preparar el statement
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+            //4. Damos valor al ?
+            objPrepare.setInt(1,id);
+            //5. Ejecutamos el query
+            ResultSet objResult = objPrepare.executeQuery();
+
+            //6. Mientras haya un registro siguiente entonces
+            while (objResult.next()){
+                objCoder = new Coder();
+                objCoder.setId(objResult.getInt("id"));
+                objCoder.setName(objResult.getString("name"));
+                objCoder.setClan(objResult.getString("clan"));
+                objCoder.setAge(objResult.getInt("age"));
+            }
+
+        }catch (Exception e)  {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+        //7. Cerrar la conexión
+        ConfigDB.closeConnection();
+
+        return objCoder;
     }
 }
