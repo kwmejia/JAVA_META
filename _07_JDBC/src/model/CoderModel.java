@@ -55,7 +55,38 @@ public class CoderModel implements CRUD {
 
     @Override
     public boolean update(Object object) {
-        return false;
+        //1. Abrir la conexión
+        Connection objConnection = ConfigDB.openConnection();
+        //2. Convertir el objeto
+        Coder objCoder = (Coder)object;
+        //3. Variable bandera para saber si se actualizó
+        boolean isUpdated=false;
+
+        try {
+            //4. Creamos la sentencia SQL
+            String sql  = "UPDATE coder SET name = ?, age = ?, clan = ? WHERE id = ?;";
+            //5. Preparamos el statement
+           PreparedStatement objPrepare = objConnection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+
+           //6. Dar valor a los ? parámetros de Query
+            objPrepare.setString(1,objCoder.getName());
+            objPrepare.setInt(2,objCoder.getAge());
+            objPrepare.setString(3,objCoder.getClan());
+            objPrepare.setInt(4,objCoder.getId());
+
+            //7. Ejecutamos el query
+            int rowAffected  = objPrepare.executeUpdate();
+            if (rowAffected > 0){
+                isUpdated= true;
+                JOptionPane.showMessageDialog(null,"The update was successful.");
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }finally {
+            //8. Cerrar la conexión
+            ConfigDB.closeConnection();
+        }
+        return isUpdated;
     }
 
     @Override

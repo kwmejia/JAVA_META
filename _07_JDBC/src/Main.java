@@ -1,5 +1,6 @@
 import controller.CoderController;
 import database.ConfigDB;
+import model.CoderModel;
 
 import javax.swing.*;
 
@@ -29,6 +30,10 @@ public class Main {
 
                 case "2":
                     objCoderController.create();
+                    break;
+
+                case "3":
+                    objCoderController.update();
                     break;
 
                 case "4":
